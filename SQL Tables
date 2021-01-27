@@ -1,0 +1,41 @@
+CREATE TABLE products
+(
+  id INT NOT NULL AUTO_INCREMENT, 
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  price INT UNSIGNED NOT NULL,
+  quantity INT UNSIGNED NOT NULL,
+  create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+  PRIMARY KEY (id)
+)ENGINE = InnoDB;
+
+DESC products;
+
+ALTER TABLE products
+MODIFY create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+
+
+INSERT INTO products (name,price, quantity)
+VALUES ('Bakso Sapi', 14000, 54),
+	   ('Mie Ayam Spesial', 20000, 21);
+
+DELETE FROM products
+WHERE id = 4;
+
+SELECT *
+FROM products;
+
+ALTER TABLE products 
+ADD COLUMN category ENUM('Makanan', 'Minuman', 'Lain-lain') AFTER name;
+
+
+UPDATE products
+SET description ='Mbak Riya', price = price + 10000
+WHERE id = 1;
+
+UPDATE products
+SET quantity = 25
+WHERE id = 2;
+
+
+TRUNCATE TABLE products;
